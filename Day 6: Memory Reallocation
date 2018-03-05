@@ -1,0 +1,113 @@
+
+def control(str,constr):
+    length=len(constr)
+    for i in range(0,length):
+        if constr[i]==str:
+            return 1
+    return 0
+step=0
+array=input().split()
+length=len(array)
+arrayware={}
+while control(array,arrayware)==0:
+    arrayware[step]=array.copy()
+    step =step+1
+    max=0
+    for i in range(0,length):
+        if int(array[i])>int(max):
+            max=int(array[i])
+            inds=i
+    pcs=int(max)//int(length-1)
+
+    for m in range(0,length):
+        if pcs==0:
+            for n in range(inds+1,length):
+                array[n]=int(array[n])+1
+                max=max-1
+                if max==0:
+                    break
+            z=0
+            while max>0:
+
+                array[z]=int(array[z])+1
+                max=max-1
+                z=z+1
+            array[inds]=0
+            break
+
+        else:
+            if m!=inds:
+              array[m]=int(array[m])+pcs
+            else:
+              array[m]=int(array[m])-pcs*(length-1)
+
+print(step)
+
+
+
+                                                                  PART 2
+
+def control(str,constr):
+    length=len(constr)
+    for i in range(0,length):
+        if constr[i]==str:
+            return 1
+    return 0
+def indice(str,constr):
+    length=len(constr)
+    for i in range(0,length):
+        if constr[i]==str:
+            return i
+    return -1
+step=0
+array=input().split()
+length=len(array)
+arrayware={}
+while control(array,arrayware)==0:
+    arrayware[step]=array.copy()
+    step =step+1
+    max=0
+    for i in range(0,length):
+        if int(array[i])>int(max):
+            max=int(array[i])
+            inds=i
+    pcs=int(max)//int(length-1)
+
+    for m in range(0,length):
+        if pcs==0:
+            for n in range(inds+1,length):
+                array[n]=int(array[n])+1
+                max=max-1
+                if max==0:
+                    break
+            z=0
+            while max>0:
+
+                array[z]=int(array[z])+1
+                max=max-1
+                z=z+1
+            array[inds]=0
+            break
+
+        else:
+            if m!=inds:
+              array[m]=int(array[m])+pcs
+            else:
+              array[m]=int(array[m])-pcs*(length-1)
+
+
+
+    which=indice(array,arrayware)
+length=len(arrayware)
+
+print(length-which)
+
+
+
+
+
+
+
+
+
+                    
