@@ -1,0 +1,96 @@
+import math
+sqr=0
+space=0
+numspace=0
+num=input("enter the input:")
+sqr=math.sqrt(int(num))//1+1
+if sqr%2==0:
+    sqr=sqr+1
+space=int(sqr-1)
+numspace=space-(sqr*sqr-int(num))%space
+print(numspace)
+
+
+                                      Part 2
+                                      
+spiral = {}
+spiral[(0,0)]=1
+spiral[(1,0)]=1
+spiral[(1,1)]=2
+spiral[(0,1)]=4
+spiral[(-1,1)]=5
+spiral[(-1,0)]=10
+spiral[(-1,-1)]=11
+xx=-1
+yy=-1
+num=input("enter the num ")
+def seq(inx,iny):
+    if inx==-iny and inx>=0:
+        return (inx+1,iny)
+    elif inx==-iny:
+        return (inx,iny-1)
+    elif inx>iny and -iny>inx:
+        return (inx+1,iny)
+    elif inx>iny:
+        return (inx,iny+1)
+    elif inx==iny and inx>0:
+        return(inx-1,iny)
+    elif inx==iny:
+        return(inx+1,iny)
+    elif iny>inx and -inx>iny:
+        return (inx,iny-1)
+    elif iny>inx and iny>0:
+        return (inx-1,iny)
+    elif inx==-iny and iny>0:
+        return(inx,iny-1)
+
+
+def sum(x,y):
+    a=0
+    b=0
+    c=0
+    d=0
+    a1,b1=seq(x,y)
+    a2,b2=seq(a1,b1)
+    if seq(x-1,y)==(x,y):
+        a=spiral[(x-1,y)]
+        b=spiral[(x-1,y+1)]
+        if seq(x,y)==(x+1,y):
+            c=spiral[(x,y+1)]
+        if seq(x,y)==(x+1,y) and x!=-y:
+            d=spiral[(x+1,y+1)]
+        spiral[(x,y)]=a+b+c+d
+        return
+    if seq(x,y-1)==(x,y):
+        a=spiral[(x,y-1)]
+        b=spiral[(x-1,y-1)]
+        if seq(x,y)==(x,y+1):
+           c=spiral[(x-1,y)]
+        if (x-1,y+1)!=(a2,b2) and seq(x,y)==(x,y+1):
+           d=spiral[(x-1,y+1)]
+        spiral[(x,y)]=a+b+c+d
+        return
+    if seq(x+1,y)==(x,y):
+        a=spiral[(x+1,y)]
+        b=spiral[(x+1,y-1)]
+        if seq(x,y)==(x-1,y):
+            c=spiral[(x,y-1)]
+        if (x-1,y-1)!=(a2,b2) and seq(x,y)==(x-1,y):
+            d=spiral[(x-1,y-1)]
+        spiral[(x,y)]=a+b+c+d
+        return
+    if seq(x,y+1)==(x,y):
+        a=spiral[(x,y+1)]
+        b=spiral[(x+1,y+1)]
+        if seq(x,y)==(x,y-1):
+            c=spiral[(x+1,y)]
+        if (a2,b2)!=(x+1,y-1) and seq(x,y)==(x,y-1):
+            d=spiral[(x+1,y-1)]
+        spiral[(x,y)]=a+b+c+d
+        return
+a=0
+while a<int(num):
+    sum(xx,yy)
+    a=spiral[(xx,yy)]
+    print(spiral[(xx,yy)])
+    (xx,yy)=seq(xx,yy)
