@@ -1,0 +1,110 @@
+                                    I removed from input that chars:    ,  (   )
+
+
+file=open("info.txt","r+")
+array=file.readline().split()
+subi=0
+sup=array[0]
+while len(array)>0:
+    if len(array)>2:
+        for i in range(3,len(array)):
+            if sup==array[i]:
+                sup=array[0]
+                file.seek(0)
+    array=file.readline().split()
+print(sup)
+                                            
+                                            Part 2
+                                            
+ def supest():
+ file=open("info.txt","r+")
+ array=file.readline().split()
+ subi=0
+ sup=array[0]
+ while len(array)>0:
+    if len(array)>2:
+        for i in range(3,len(array)):
+            if sup==array[i]:
+                sup=array[0]
+                file.seek(0)
+    array=file.readline().split()
+ return sup
+
+def weight(str,n):
+    file=open("info.txt","r+")
+    array=file.readline().split()
+    while len(array)>0:
+        if array[0]==str:
+          if len(array)>2:
+            for i in range(3,len(array)):
+              if i==3:
+                n=int(array[1])
+              n=n+weight(array[i],n)
+          elif len(array)<3:
+           n=int(array[1])
+           return n
+
+        array=file.readline().split()
+    return n
+
+def control(subs):
+            for i in range(0,len(subs)-2):
+                if weight(subs[i],0)!=weight(subs[i+1],0) and weight(subs[i],0)!=weight(subs[i+2],0):
+                    return(subs[i])
+                elif len(subs)-2==i+1 and weight(subs[i],0)!=weight(subs[3],0):
+                    return(subs[i+1])
+                elif len(subs)-1==i+2 and weight(subs[i+2],0)!=weight(subs[3],0):
+                    return(subs[i+2])
+            return -1
+
+
+
+def cont(str):
+    file=open("info.txt","r+")
+    array=file.readline().split()
+    hatali={}
+    whthstobe=0
+    while len(array)>0:
+          if array[0]==str:
+              hatali=control(array[3::])
+              if hatali==-1:
+                  return str
+              else:
+                 str=hatali
+                 file.seek(0)
+
+          array=file.readline().split()
+    return str
+def ksselnum(htli):
+    file=open("info.txt","r+")
+    array=file.readline().split()
+    while len(array)>0:
+        if array[0]==htli:
+            num= int(array[1])
+            return num
+        array=file.readline().split()
+
+hatali={}
+hatali=cont(supest())
+file=open("info.txt","r+")
+array=file.readline().split()
+ksselnum=ksselnum(hatali)
+while len(array)>0:
+  for i in range(3,len(array)):
+    if array[i]==hatali:
+       if i==len(array)-1:
+         if weight(array[i],0)>weight(array[i-1]):
+           num=ksselnum+weight(array[i-1],0)-weight(array[i],0)
+           print(num)
+         else:
+           num=ksselnum-weight(array[i-1],0)+weight(array[i],0)
+           print(num)
+       else:
+        if weight(array[i],0)>weight(array[i+1],0):
+           num=ksselnum+weight(array[i+1],0)-weight(array[i],0)
+           print(num)
+        else:
+            num=ksselnum-weight(array[i+1],0)+weight(array[i],0)
+            print(num)
+
+  array=file.readline().split()
