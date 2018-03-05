@@ -1,0 +1,37 @@
+sum=0
+counter=0
+row=input("how many row you have got")
+for i in range(0,int(row)):
+ ar=input().split()
+ max=int(ar[0])
+ min=int(ar[0])
+ length=len(ar)
+ counter=0
+ while counter<length:
+  if int(ar[counter])>=max:
+      max=int(ar[counter])
+  if int(ar[counter])<=min:
+    min=int(ar[counter])
+  counter=counter+1
+
+ sum=sum+int(max)-int(min)
+
+print(sum)
+
+
+                                            Part 2
+                                            
+ sum=0
+counter=0
+row=input("how many row you have got")
+for i in range(0,int(row)):
+    ar=input().split()
+    max=int(ar[0])
+    min=int(ar[0])
+    length=len(ar)
+    for m in range(0,int(length)):
+        for n in range (0,length):
+            if int(ar[n])%int(ar[m])==0 and m!=n:
+                sum=sum+int(ar[n])/int(ar[m])
+
+print(sum)
