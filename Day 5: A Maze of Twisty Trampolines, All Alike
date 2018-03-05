@@ -1,0 +1,40 @@
+f=open("info.txt","r+")
+c=0
+sum=0
+step=1
+location=0
+temploc=0
+line=f.read().split()
+length=len(line)
+print(line)
+while length-location>int(line[location]):
+    temploc=location
+    location=location+int(line[location])
+    line[temploc]=int(line[temploc])+1
+    step+=1
+
+print(step)
+
+
+                                            PART 2
+f=open("info.txt","r+")
+c=0
+sum=0
+step=1
+location=0
+temploc=0
+line=f.read().split()
+length=len(line)
+
+while length-location>int(line[location]):
+    temploc=location
+    location=location+int(line[location])
+    if int(line[temploc])>=3:
+       line[temploc]=int(line[temploc])-1
+    else:
+        line[temploc]=int(line[temploc])+1
+    step+=1
+
+
+print(step)
+
