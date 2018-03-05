@@ -1,0 +1,72 @@
+f=open("info.txt","r+")
+c=0
+sum=0
+ar=f.readline().split()
+while len(ar)>0:
+    length=len(ar)
+    for i in range(0,length):
+        for m in range(0,length):
+            if ar[i]==ar[m] and i!=m:
+                c=1
+    if c==0:
+        sum = sum +1
+    ar=f.readline().split()
+    c=0
+print(sum)
+
+
+                                              PART 2
+                                              
+
+def stringcontrol(str1,str2):
+    length=len(str1)
+    sum=0
+    temstr=' '
+    if len(str1)!=len(str2):
+        return 0
+    for i in range(0,length):
+        for m in range(0,length):
+            if str1[i]==str2[m]:
+                sum+=1
+                if m!=0 and m!=length-1:
+                    str2=str2[0:m]+' '+str2[m+1:]
+                elif m==0:
+                    str2=' '+str2[1:]
+                elif m==length-1:
+                    str2=str2[0:length-1]+' '
+                break
+    if sum==length:
+        return 1
+    else:
+        return 0
+
+
+
+
+f=open("info.txt","r+")
+sum=0
+c=0
+invalid=0
+ar=f.readline().split()
+while len(ar)>0:
+    length=len(ar)
+    for i in range(0,length):
+        for m in range(0,length):
+            if len(ar[i])==len(ar[m]) and i!=m:
+                 c= stringcontrol(ar[i],ar[m])
+            if c==1:
+                break
+        if c==1:
+            break
+
+    if c==0:
+      sum = sum +1
+    ar=f.readline().split()
+    c=0
+
+print(sum)
+
+
+
+
+
