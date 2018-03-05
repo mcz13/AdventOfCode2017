@@ -1,0 +1,40 @@
+sum=0
+
+num=input("enter the sequence ")
+
+length=len(num)
+sayac=0
+
+
+while sayac<length-1:
+ if num[sayac] == num[sayac+1]:
+     sum=sum+int(num[sayac])
+
+ sayac=sayac+1
+
+if num[0]==num[-1]:
+    sum=sum + int(num[0])
+
+print(sum)
+
+
+                                              Part 2
+
+
+
+sum=0
+
+num=input("enter the sequence ")
+
+length=len(num)
+sayac=0
+half=len(num)//2
+half=length-half
+while sayac<length:
+ if num[sayac]==num[int(sayac+half)%length]:
+  sum =sum+int(num[sayac])
+
+ sayac=sayac+1
+
+
+print(sum)
