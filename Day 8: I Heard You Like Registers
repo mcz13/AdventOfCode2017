@@ -1,0 +1,254 @@
+def iffuncexst(str,strings):
+    for i in range (0,len(strings)):
+        if strings[i]==str:
+            return i
+    return -1
+def fndmax(weight):
+    max=weight[0]
+    for i in range(0,len(weight)):
+        if max<weight[i]:
+            max=weight[i]
+    return max
+file=open("info.txt","r+")
+array=file.readline().split()
+i=0
+strings={}
+weight={}
+cntrl=0
+before=-1
+while len(array)>0:
+         if iffuncexst(array[0],strings)==-1:
+            strings[i]=array[0]
+            weight[i]=0
+         elif iffuncexst(array[0],strings)!=-1:
+             before=i
+             i=iffuncexst(array[0],strings)
+
+
+         if array[5]=="!=":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]!=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0!=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+         elif array[5]=="<":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]<int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0<int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+         elif array[5]==">=":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]>=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0>=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+
+         elif array[5]=="==":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]==int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0==int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+         elif array[5]=="<=":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]<=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0<=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+         elif array[5]==">":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]>int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0>int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+
+
+         if before!=-1:
+            i=before
+         else:
+             i=i+1
+         before=-1
+         array=file.readline().split()
+
+print(weight)
+print(strings)
+print(fndmax(weight))
+                                                    Part Two
+def iffuncexst(str,strings):
+    for i in range (0,len(strings)):
+        if strings[i]==str:
+            return i
+    return -1
+def fndmax(weight):
+    max=weight[0]
+    for i in range(0,len(weight)):
+        if max<weight[i]:
+            max=weight[i]
+    return max
+file=open("info.txt","r+")
+array=file.readline().split()
+i=0
+strings={}
+weight={}
+cntrl=0
+before=-1
+max=0
+while len(array)>0:
+         if iffuncexst(array[0],strings)==-1:
+            strings[i]=array[0]
+            weight[i]=0
+         elif iffuncexst(array[0],strings)!=-1:
+             before=i
+             i=iffuncexst(array[0],strings)
+
+
+         if array[5]=="!=":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]!=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0!=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+         elif array[5]=="<":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]<int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0<int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+         elif array[5]==">=":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]>=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0>=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+
+         elif array[5]=="==":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]==int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0==int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+         elif array[5]=="<=":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]<=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0<=int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+         elif array[5]==">":
+             if iffuncexst(array[4],strings)!=-1:
+                 n=iffuncexst(array[4],strings)
+                 if weight[n]>int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+             else:
+                 if 0>int(array[6]):
+                     if array[1]=="inc":
+                         weight[i]=weight[i]+int(array[2])
+                     else:
+                         weight[i]=weight[i]-int(array[2])
+
+         if fndmax(weight)>max:
+             max=fndmax(weight)
+         if before!=-1:
+            i=before
+         else:
+             i=i+1
+         before=-1
+         array=file.readline().split()
+
+
+print(max)
+                                                    
+                                                    
+                                                    
+                                                    
