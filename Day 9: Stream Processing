@@ -1,0 +1,27 @@
+file = open('info.txt', 'r')
+array=list(file.readline()) #list methot used to split word to characters
+total=0
+weight=0
+gcontrol=0
+indice=0
+while indice<len(array):
+    if array[indice]=="!":
+        indice=indice+1
+    elif array[indice]=="<" or gcontrol==1:
+        gcontrol=1
+        if array[indice]==">":
+            gcontrol=0
+    elif array[indice]=="{":
+        weight=1+weight
+    elif array[indice]=="}":
+        total=total+weight
+        weight=weight-1
+    indice=indice+1
+
+
+print(total)
+
+
+
+
+                                                 Part 2              
