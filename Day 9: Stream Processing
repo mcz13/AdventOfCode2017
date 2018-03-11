@@ -25,3 +25,24 @@ print(total)
 
 
                                                  Part 2              
+
+
+file = open('info.txt', 'r')
+array=list(file.readline()) #list methot used to split word to characters
+nchar=0
+gcontrol=0
+indice=0
+while indice<len(array):
+    if array[indice]=="!":
+        indice=indice+1
+    elif array[indice]=="<" and gcontrol==0:
+        gcontrol=1
+    elif array[indice]==">" and gcontrol==1:
+            gcontrol=0
+    elif gcontrol==1:
+       nchar=nchar+1
+
+    indice=indice+1
+
+
+print(nchar)
